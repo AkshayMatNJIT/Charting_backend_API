@@ -1,39 +1,31 @@
 package com.digitalhealthapp.charting.dao.impl;
 
+import com.digitalhealthapp.charting.dao.EmployeeDao;
+import com.digitalhealthapp.charting.models.Employee;
+
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import javax.annotation.PostConstruct;
-import javax.sql.DataSource;
+public class EmployeeDaoImpl implements EmployeeDao {
 
-import com.digitalhealthapp.charting.dao.EmployeeDao;
-import com.digitalhealthapp.charting.models.Employee;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BatchPreparedStatementSetter;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
-import org.springframework.stereotype.Repository;
+    Connection connection;
 
-@Repository
-public class EmployeeDaoImpl extends JdbcDaoSupport implements EmployeeDao {
-
-    @Autowired
-    DataSource dataSource;
-
-    @PostConstruct
-    private void initialize(){
-        setDataSource(dataSource);
+    {
+        try {
+            connection = JDBCConnector.getInstance().getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void insertEmployee(Employee emp) {
-        String sql = "INSERT INTO doctors " + "(doc_id, doc_full_name, doc_email, doc_dept) VALUES (?,?,?,?)";
-        assert getJdbcTemplate() != null;
-        getJdbcTemplate().update(sql, emp.getDoc_id(), emp.getDoc_full_name(), emp.getDoc_email(), emp.getDoc_dept());
+    public void insertEmployee(Employee cus) {
+
     }
 
     @Override
@@ -47,18 +39,19 @@ public class EmployeeDaoImpl extends JdbcDaoSupport implements EmployeeDao {
     }
 
     @Override
-    public Employee getEmployeeById(String empId) {
-        String sql = "SELECT * FROM doctors WHERE doc_id = ?";
-        return  (Employee)getJdbcTemplate().queryForObject(sql, new Object[]{empId}, new RowMapper<Employee>() {
-            @Override
-            public Employee mapRow(ResultSet rs, int rwNumber) throws SQLException {
-               Employee emp = new Employee();
-               emp.setDoc_id(rs.getString("doc_id"));
-               emp.setDoc_full_name(rs.getString("doc_full_name"));
-               emp.setDoc_email(rs.getString("doc_email"));
-               emp.setDoc_dept(rs.getString("doc_dept"));
-               return emp;
-            }
-        });
+    public Employee getEmployeeById(String empId) throws SQLException, ClassNotFoundException {
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM doctors WHERE doctorId = ?");
+        ps.setString(1, empId);
+        ResultSet rs = ps.executeQuery();
+        Employee emp = new Employee();
+        while (rs.next()) {
+            emp.setDoc_id(rs.getString(1));
+            emp.setDoc_totalPatients(rs.getString(2));
+            emp.setDoc_departmentId(rs.getString(3));
+            emp.setDoc_specializationDept(rs.getString(4));
+            emp.setDoc_description(rs.getString(5));
+            emp.setDoc_yrsOfExp(rs.getString(6));
+        }
+        return emp;
     }
 }

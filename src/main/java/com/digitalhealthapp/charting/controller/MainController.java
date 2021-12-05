@@ -18,12 +18,12 @@ public class MainController {
     }
 
     //URI Ex: http://localhost:8080/employee?empid=45623
-    @RequestMapping(value = "/employee", method = RequestMethod.GET)
-    public void getEmployeeById(@RequestParam String empid){
-        employeeService.getEmployeeById(empid);
+    @RequestMapping(value = "/doctor", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<Object> getEmployeeById(@RequestParam String empid){
+        return employeeService.getEmployeeById(empid);
     }
 
-    @RequestMapping(value = "/addemployee", method = RequestMethod.POST)
+    @RequestMapping(value = "/addemployee", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<HttpStatus> addEmployee(@RequestBody Employee emp){
         employeeService.insertEmployee(emp);
         return ResponseEntity.ok(HttpStatus.OK);

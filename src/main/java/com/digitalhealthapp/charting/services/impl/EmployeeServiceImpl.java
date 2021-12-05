@@ -1,17 +1,26 @@
 package com.digitalhealthapp.charting.services.impl;
 import com.digitalhealthapp.charting.dao.EmployeeDao;
+import com.digitalhealthapp.charting.dao.impl.EmployeeDaoImpl;
 import com.digitalhealthapp.charting.models.Employee;
 import com.digitalhealthapp.charting.services.EmployeeService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    @Autowired
-    EmployeeDao employeeDao;
+    private EmployeeDao employeeDao = new EmployeeDaoImpl();
+
+    public EmployeeDao getEmployeeDao() {
+        return employeeDao;
+    }
+
+    public void setEmployeeDao(EmployeeDao employeeDao) {
+        this.employeeDao = employeeDao;
+    }
 
     @Override
     public void insertEmployee(Employee emp) {
@@ -29,9 +38,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void getEmployeeById(String empId) {
-        Employee employee = employeeDao.getEmployeeById(empId);
+    public ResponseEntity<Object> getEmployeeById(String empId) {
+        Employee employee = null;
+        try {
+            employee = employeeDao.getEmployeeById(empId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         System.out.println(employee);
 
+        return null;
     }
 }
