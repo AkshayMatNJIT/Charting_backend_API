@@ -13,16 +13,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeDao employeeDao = new EmployeeDaoImpl();
 
-    public EmployeeDao getEmployeeDao() {
-        return employeeDao;
-    }
-
-    public void setEmployeeDao(EmployeeDao employeeDao) {
-        this.employeeDao = employeeDao;
-    }
-
     @Override
-    public void insertEmployee(Employee emp) {
+    public void insertEmployee(Employee emp) throws SQLException {
         employeeDao.insertEmployee(emp);
     }
 
@@ -42,8 +34,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         try {
             employee = employeeDao.getEmployeeById(empId);
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         System.out.println(employee);

@@ -2,7 +2,8 @@ package com.digitalhealthapp.charting.models;
 
 public class Employee {
 
-    String doc_id, doc_totalPatients, doc_departmentId, doc_specializationDept, doc_description, doc_yrsOfExp;
+    String doc_id, doc_description;
+    int doc_totalPatients, doc_departmentId, doc_yrsOfExp;
 
     public String getDoc_id() {
         return doc_id;
@@ -12,12 +13,28 @@ public class Employee {
         this.doc_id = doc_id;
     }
 
-    public String getDoc_totalPatients() {
+    public int getDoc_totalPatients() {
         return doc_totalPatients;
     }
 
-    public void setDoc_totalPatients(String doc_totalPatients) {
+    public void setDoc_totalPatients(int doc_totalPatients) {
         this.doc_totalPatients = doc_totalPatients;
+    }
+
+    public int getDoc_departmentId() {
+        return doc_departmentId;
+    }
+
+    public void setDoc_departmentId(int doc_departmentId) {
+        this.doc_departmentId = doc_departmentId;
+    }
+
+    public int getDoc_yrsOfExp() {
+        return doc_yrsOfExp;
+    }
+
+    public void setDoc_yrsOfExp(int doc_yrsOfExp) {
+        this.doc_yrsOfExp = doc_yrsOfExp;
     }
 
     @Override
@@ -26,26 +43,9 @@ public class Employee {
                 "doc_id='" + doc_id + '\'' +
                 ", doc_totalPatients='" + doc_totalPatients + '\'' +
                 ", doc_departmentId='" + doc_departmentId + '\'' +
-                ", doc_specializationDept='" + doc_specializationDept + '\'' +
                 ", doc_description='" + doc_description + '\'' +
                 ", doc_yrsOfExp='" + doc_yrsOfExp + '\'' +
                 '}';
-    }
-
-    public String getDoc_departmentId() {
-        return doc_departmentId;
-    }
-
-    public void setDoc_departmentId(String doc_departmentId) {
-        this.doc_departmentId = doc_departmentId;
-    }
-
-    public String getDoc_specializationDept() {
-        return doc_specializationDept;
-    }
-
-    public void setDoc_specializationDept(String doc_specializationDept) {
-        this.doc_specializationDept = doc_specializationDept;
     }
 
     public String getDoc_description() {
@@ -54,14 +54,6 @@ public class Employee {
 
     public void setDoc_description(String doc_description) {
         this.doc_description = doc_description;
-    }
-
-    public String getDoc_yrsOfExp() {
-        return doc_yrsOfExp;
-    }
-
-    public void setDoc_yrsOfExp(String doc_yrsOfExp) {
-        this.doc_yrsOfExp = doc_yrsOfExp;
     }
 
 }

@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface EmployeeDao {
 
-    void insertEmployee(Employee cus);
+    void insertEmployee(Employee cus) throws SQLException;
     void insertEmployees(List<Employee> employees);
-    List<Employee> getAllEmployees();
-    Employee getEmployeeById(String empId) throws SQLException, ClassNotFoundException;
+    List<Employee> getAllEmployees() throws SQLException;
+    Employee getEmployeeById(String empId) throws SQLException;
 }

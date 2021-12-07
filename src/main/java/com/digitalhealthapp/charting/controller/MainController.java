@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
+
 @RestController
 public class MainController {
 
@@ -24,8 +26,8 @@ public class MainController {
         return ResponseEntity.ok().body(new Gson().toJson(employeeService.getEmployeeById(empid)));
     }
 
-    @RequestMapping(value = "/addemployee", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<HttpStatus> addEmployee(@RequestBody Employee emp){
+    @RequestMapping(value = "/addemployee", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<HttpStatus> addEmployee(@RequestBody Employee emp) throws SQLException {
         employeeService.insertEmployee(emp);
         return ResponseEntity.ok(HttpStatus.OK);
     }
