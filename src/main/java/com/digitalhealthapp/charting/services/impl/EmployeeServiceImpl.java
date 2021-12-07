@@ -3,7 +3,6 @@ import com.digitalhealthapp.charting.dao.EmployeeDao;
 import com.digitalhealthapp.charting.dao.impl.EmployeeDaoImpl;
 import com.digitalhealthapp.charting.models.Employee;
 import com.digitalhealthapp.charting.services.EmployeeService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -38,8 +37,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public ResponseEntity<Object> getEmployeeById(String empId) {
-        Employee employee = null;
+    public Employee getEmployeeById(String empId) {
+        Employee employee = new Employee();
         try {
             employee = employeeDao.getEmployeeById(empId);
         } catch (SQLException e) {
@@ -49,6 +48,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         System.out.println(employee);
 
-        return null;
+        return employee;
     }
 }

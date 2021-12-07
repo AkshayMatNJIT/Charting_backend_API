@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ChartingApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(ChartingApplication.class, args);
 	}
 
