@@ -13,6 +13,8 @@ Sample URLs -
 Lab Reports -
 GET by id: http://localhost:8080/labreport?reportid=2
 
+GET all lab reports: http://localhost:8080/getalllabreports
+
 POST: http://localhost:8080/addlabreport
 
 Sample Request body: {
@@ -28,6 +30,8 @@ Sample Request body: {
 
 Medication -
 GET by id: http://localhost:8080/medication?medicationid=2
+
+GET all Medication records: http://localhost:8080/getallmedicationreports
 
 POST: http://localhost:8080/addmedicationrecord
 
