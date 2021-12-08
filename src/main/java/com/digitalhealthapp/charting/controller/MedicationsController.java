@@ -28,7 +28,7 @@ public class MedicationsController {
 
     //URI: http://localhost:8080/addmedicationrecord
     @RequestMapping(value = "/addmedicationrecord", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<HttpStatus> addLabReport(@RequestBody String medication) throws SQLException {
+    public ResponseEntity<HttpStatus> addMedicationReport(@RequestBody String medication) throws SQLException {
         Medications mr = new Gson().fromJson(medication, Medications.class);
         medicationsService.insertMedication(mr);
         return ResponseEntity.ok(HttpStatus.OK);

@@ -10,7 +10,6 @@ public class LabReports {
   int patientId, doctorId, reportId;
   String reportName, worksheetFilepath, patientFilepath, description;
 
-//    TimestampConverter converter = new TimestampConverter();
     Timestamp dueBy = new Timestamp(new Date().getTime());
 
     public int getPatientId() {

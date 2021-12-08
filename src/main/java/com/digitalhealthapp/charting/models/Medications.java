@@ -1,9 +1,13 @@
 package com.digitalhealthapp.charting.models;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 public class Medications {
 
     int patientId, doctorId, medicationId;
     String medicationName, medicationRoutine, description;
+    Timestamp tillDate = new Timestamp(new Date().getTime());
 
     public int getPatientId() {
         return patientId;
@@ -51,5 +55,13 @@ public class Medications {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Timestamp getTillDate() {
+        return tillDate;
+    }
+
+    public void setTillDate(Timestamp tillDate) {
+        this.tillDate = tillDate;
     }
 }
