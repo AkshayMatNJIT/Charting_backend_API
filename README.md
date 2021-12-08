@@ -30,3 +30,13 @@ Medication -
 GET by id: http://localhost:8080/medication?medicationid=2
 
 POST: http://localhost:8080/addmedicationrecord
+
+Sample Request body:
+{
+    "patientId": 1111,
+    "doctorId": 2222,
+    "medicationName": "Medication 1",
+    "medicationRoutine": "3 times daily",
+    "description": "to be followed regularly",
+    "tillDate": "Dec 5, 2021, 3:22:26 AM"
+}
