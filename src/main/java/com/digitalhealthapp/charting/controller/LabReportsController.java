@@ -17,7 +17,7 @@ public class LabReportsController {
 
     //URI: http://localhost:8080/labreport?reportid=2
     @RequestMapping(value = "/labreport", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<Object> getLabReportById(@RequestParam(required=true, defaultValue = "2", name = "reportid") String reportId){
+    public ResponseEntity<Object> getLabReportById(@RequestParam(required=true, defaultValue = "0", name = "reportid") String reportId){
         return ResponseEntity.ok().body(new Gson().toJson(labReportsService.getLabReportById(Integer.parseInt(reportId))));
     }
 
