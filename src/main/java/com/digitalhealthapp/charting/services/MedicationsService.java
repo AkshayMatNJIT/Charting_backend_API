@@ -9,6 +9,6 @@ public interface MedicationsService {
 
     void insertMedication(Medications medication) throws SQLException;
     void insertMedications(List<Medications> medicationsList);
-    void getAllMedicationsList();
+    List<Medications> getAllMedicationsList() throws SQLException;
     Medications getMedicationById(int medicationId);
 }

@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MedicationsDaoImpl implements MedicationsDao {
@@ -46,7 +47,22 @@ public class MedicationsDaoImpl implements MedicationsDao {
 
     @Override
     public List<Medications> getAllMedicationList() throws SQLException {
-        return null;
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM medications");
+        ResultSet rs = ps.executeQuery();
+        List<Medications> mr_list = new ArrayList<Medications>();
+
+        while (rs.next()) {
+            Medications mr = new Medications();
+            mr.setPatientId(rs.getInt(1));
+            mr.setDoctorId(rs.getInt(2));
+            mr.setMedicationId(rs.getInt(3));
+            mr.setMedicationName(rs.getString(4));
+            mr.setMedicationRoutine(rs.getString(5));
+            mr.setTillDate(rs.getTimestamp(6));
+            mr.setDescription(rs.getString(7));
+            mr_list.add(mr);
+        }
+        return mr_list;
     }
 
     @Override

@@ -9,6 +9,6 @@ public interface LabReportsService {
 
     void insertLabReport(LabReports labReport) throws SQLException;
     void insertLabReports(List<LabReports> reports);
-    void getAllLabReports();
+    List<LabReports> getAllLabReports() throws SQLException;
     LabReports getLabReportById(int reportId);
 }

@@ -24,8 +24,8 @@ public class LabReportsServiceImpl implements LabReportsService {
     }
 
     @Override
-    public void getAllLabReports() {
-
+    public List<LabReports> getAllLabReports() throws SQLException {
+        return labReportsDao.getAllLabReports();
     }
 
     @Override

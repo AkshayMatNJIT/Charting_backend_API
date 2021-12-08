@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class LabReportsDaoImpl implements LabReportsDao {
@@ -48,7 +49,23 @@ public class LabReportsDaoImpl implements LabReportsDao {
 
     @Override
     public List<LabReports> getAllLabReports() throws SQLException {
-        return null;
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM lab_reports");
+        ResultSet rs = ps.executeQuery();
+        List<LabReports> lr_list = new ArrayList<LabReports>();
+
+        while (rs.next()) {
+            LabReports lr = new LabReports();
+            lr.setPatientId(rs.getInt(1));
+            lr.setDoctorId(rs.getInt(2));
+            lr.setReportId(rs.getInt(3));
+            lr.setReportName(rs.getString(4));
+            lr.setWorksheetFilepath(rs.getString(5));
+            lr.setPatientFilepath(rs.getString(6));
+            lr.setDueBy(rs.getTimestamp(7));
+            lr.setDescription(rs.getString(8));
+            lr_list.add(lr);
+        }
+        return lr_list;
     }
 
     @Override

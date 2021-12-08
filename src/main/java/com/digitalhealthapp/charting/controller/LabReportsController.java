@@ -28,4 +28,10 @@ public class LabReportsController {
         labReportsService.insertLabReport(lr);
         return ResponseEntity.ok(HttpStatus.OK);
     }
+
+    //URI: http://localhost:8080/getalllabreports
+    @RequestMapping(value = "/getalllabreports", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<Object> getAllLabReports() throws SQLException {
+        return ResponseEntity.ok().body(new Gson().toJson(labReportsService.getAllLabReports()));
+    }
 }

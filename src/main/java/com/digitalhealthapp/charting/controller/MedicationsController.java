@@ -31,4 +31,10 @@ public class MedicationsController {
         medicationsService.insertMedication(mr);
         return ResponseEntity.ok(HttpStatus.OK);
     }
+
+    //URI: http://localhost:8080/getallmedicationreports
+    @RequestMapping(value = "/getallmedicationreports", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<Object> getAllMedicationReports() throws SQLException {
+        return ResponseEntity.ok().body(new Gson().toJson(medicationsService.getAllMedicationsList()));
+    }
 }

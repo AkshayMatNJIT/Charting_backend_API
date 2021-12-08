@@ -2,7 +2,6 @@ package com.digitalhealthapp.charting.services.impl;
 
 import com.digitalhealthapp.charting.dao.MedicationsDao;
 import com.digitalhealthapp.charting.dao.impl.MedicationsDaoImpl;
-import com.digitalhealthapp.charting.models.LabReports;
 import com.digitalhealthapp.charting.models.Medications;
 import com.digitalhealthapp.charting.services.MedicationsService;
 
@@ -24,8 +23,8 @@ public class MedicationsServiceImpl implements MedicationsService {
     }
 
     @Override
-    public void getAllMedicationsList() {
-
+    public List<Medications> getAllMedicationsList() throws SQLException {
+        return medicationsDao.getAllMedicationList();
     }
 
     @Override
