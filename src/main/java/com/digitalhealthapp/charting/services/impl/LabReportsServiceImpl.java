@@ -2,6 +2,7 @@ package com.digitalhealthapp.charting.services.impl;
 
 import com.digitalhealthapp.charting.dao.LabReportsDao;
 import com.digitalhealthapp.charting.dao.impl.LabReportsDaoImpl;
+import com.digitalhealthapp.charting.models.Employee;
 import com.digitalhealthapp.charting.models.LabReports;
 import com.digitalhealthapp.charting.services.LabReportsService;
 
@@ -14,7 +15,7 @@ public class LabReportsServiceImpl implements LabReportsService {
 
     @Override
     public void insertLabReport(LabReports labReport) throws SQLException {
-
+        labReportsDao.insertLabReport(labReport);
     }
 
     @Override
@@ -29,6 +30,14 @@ public class LabReportsServiceImpl implements LabReportsService {
 
     @Override
     public LabReports getLabReportById(int reportId) {
-        return null;
+        LabReports labReport = new LabReports();
+        try {
+            labReport = labReportsDao.getLabReportById(reportId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println(labReport);
+
+        return labReport;
     }
 }

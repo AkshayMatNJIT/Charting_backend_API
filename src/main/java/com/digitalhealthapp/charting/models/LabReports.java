@@ -1,9 +1,17 @@
 package com.digitalhealthapp.charting.models;
 
+import com.digitalhealthapp.charting.utilities.TimestampConverter;
+
+import java.sql.Timestamp;
+import java.util.Date;
+
 public class LabReports {
 
   int patientId, doctorId, reportId;
-  String reportName, worksheetFilepath, description;
+  String reportName, worksheetFilepath, patientFilepath, description;
+
+//    TimestampConverter converter = new TimestampConverter();
+    Timestamp dueBy = new Timestamp(new Date().getTime());
 
     public int getPatientId() {
         return patientId;
@@ -11,6 +19,14 @@ public class LabReports {
 
     public void setPatientId(int patientId) {
         this.patientId = patientId;
+    }
+
+    public Timestamp getDueBy() {
+        return dueBy;
+    }
+
+    public void setDueBy(Timestamp dueBy) {
+        this.dueBy = dueBy;
     }
 
     public int getDoctorId() {
@@ -43,6 +59,14 @@ public class LabReports {
 
     public void setWorksheetFilepath(String worksheetFilepath) {
         this.worksheetFilepath = worksheetFilepath;
+    }
+
+    public String getPatientFilepath() {
+        return patientFilepath;
+    }
+
+    public void setPatientFilepath(String patientFilepath) {
+        this.patientFilepath = patientFilepath;
     }
 
     public String getDescription() {
