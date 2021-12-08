@@ -1,7 +1,6 @@
 package com.digitalhealthapp.charting.dao.impl;
 
 import com.digitalhealthapp.charting.dao.MedicationsDao;
-import com.digitalhealthapp.charting.models.LabReports;
 import com.digitalhealthapp.charting.models.Medications;
 
 import java.sql.Connection;
@@ -59,10 +58,11 @@ public class MedicationsDaoImpl implements MedicationsDao {
         while (rs.next()) {
             med.setPatientId(rs.getInt(1));
             med.setDoctorId(rs.getInt(2));
-            med.setMedicationName(rs.getString(3));
-            med.setMedicationRoutine(rs.getString(4));
-            med.setTillDate(rs.getTimestamp(5));
-            med.setDescription(rs.getString(6));
+            med.setMedicationId(rs.getInt(3));
+            med.setMedicationName(rs.getString(4));
+            med.setMedicationRoutine(rs.getString(5));
+            med.setTillDate(rs.getTimestamp(6));
+            med.setDescription(rs.getString(7));
         }
         return med;
     }
