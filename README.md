@@ -11,7 +11,7 @@ To run -
 Sample URLs -
 
 Lab Reports -
-GET: http://localhost:8080/labreport?reportid=2
+GET by id: http://localhost:8080/labreport?reportid=2
 
 POST: http://localhost:8080/addlabreport
 
@@ -27,6 +27,6 @@ Sample Request body: {
 }
 
 Medication -
-GET: http://localhost:8080/medication?medicationid=2
+GET by id: http://localhost:8080/medication?medicationid=2
 
 POST: http://localhost:8080/addmedicationrecord
