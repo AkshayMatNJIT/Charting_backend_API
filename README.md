@@ -14,6 +14,7 @@ Lab Reports -
 GET: http://localhost:8080/labreport?reportid=2
 
 POST: http://localhost:8080/addlabreport
+
 Sample Request body: {
     "patientId": 1111,
     "doctorId": 2222,
