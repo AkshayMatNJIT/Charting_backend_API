@@ -10,7 +10,8 @@ To run -
 
 Sample URLs -
 
-Lab Reports -
+Lab Reports:
+
 GET by id: http://localhost:8080/labreport?reportid=2
 
 GET all lab reports: http://localhost:8080/getalllabreports
@@ -28,7 +29,8 @@ Sample Request body: {
     "dueBy": "Dec 12, 2021, 3:22:26 AM"
 }
 
-Medication -
+Medication:
+
 GET by id: http://localhost:8080/medication?medicationid=2
 
 GET all Medication records: http://localhost:8080/getallmedicationreports
